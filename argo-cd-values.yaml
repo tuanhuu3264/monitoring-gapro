@@ -1,0 +1,30 @@
+controller:
+  resources: 
+    request: 
+      cpu: "100m"
+      memory: "128Mi"
+    limit: 
+      cpu: "200m"
+      memory: "256Mi"
+
+server: 
+  resources:
+    request: 
+      cpu: "100m"
+      memory: "128Mi"
+    limit: 
+      cpu: "200m"
+      memory: "256Mi"
+
+repoServer:
+  resources:
+    request: 
+      cpu: "100m"
+      memory: "128Mi"
+    limit: 
+      cpu: "200m"
+      memory: "256Mi"
+
+config:
+  secret:
+     argocdServerAdminPassword: "example"

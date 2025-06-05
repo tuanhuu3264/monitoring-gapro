@@ -1,0 +1,57 @@
+
+admin:
+  user: example  
+  password: example  
+
+metrics:
+  enabled: true 
+  serviceMonitor: 
+   enabeld: true 
+   namespace: prometheus
+   
+
+grafana:
+  resources:
+    requests:
+      cpu: "30m" 
+      memory: "60Mi" 
+    limits:
+      cpu: "90m"  
+      memory: "180Mi" 
+
+datasources:
+  secretDefinition:
+    apiVersion: 1 
+    datasources:
+
+      - name: Prometheus
+        type: prometheus  
+        access: proxy  
+        orgId: 1  
+        url: http://prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090 
+        version: 1  
+        editable: true  
+        isDefault: true  
+
+        jsonData:
+          httpMethod: POST       
+          keepCookies: []        
+          timeInterval: "5s"    
+          queryTimeout: "30s"   
+          tlsSkipVerify: true   
+
+      - name: Alertmanager
+        uid: alertmanager  
+        type: alertmanager  
+        access: proxy  
+        orgId: 1 
+        url: http://prometheus-kube-prometheus-alertmanager.monitoring.svc.cluster.local:9090  
+        editable: true  
+        
+        jsonData:
+          implementation: prometheus  
+          httpMethod: POST   
+          keepCookies: []    
+          timeInterval: "5s" 
+          queryTimeout: "30s"
+          tlsSkipVerify: true

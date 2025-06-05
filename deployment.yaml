@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-pod
+  template:
+    metadata:
+      labels:
+        app: api-pod
+    spec:
+      containers:
+        - name: api-test-k8s
+          image: tuanhuu3264/api-test-k8s:latest
+          ports:
+            - containerPort: 4000
+          resources:
+            requests:
+              cpu: "100m"      # tối thiểu 0.1 CPU
+              memory: "128Mi"  # tối thiểu 128Mi RAM
+            limits:
+              cpu: "250m"      # tối đa 0.25 CPU
+              memory: "256Mi"  # tối đa 256Mi RAM
