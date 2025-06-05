@@ -45,7 +45,7 @@ datasources:
         type: alertmanager  
         access: proxy  
         orgId: 1 
-        url: http://prometheus-kube-prometheus-alertmanager.monitoring.svc.cluster.local:9090  
+        url: http://prometheus-kube-prometheus-alertmanager.monitoring.svc.cluster.local:9093
         editable: true  
         
         jsonData:
